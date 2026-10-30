@@ -6,6 +6,13 @@ import altair as alt
 from engine import Config, simulate, generate_references, select_references, allocate
 
 st.set_page_config(page_title='Inventory Decision Attribution',page_icon='📦',layout='wide')
+st.sidebar.title('Navigation')
+page=st.sidebar.radio('Go to', ['Analysis dashboard', 'Methodology & computation'], key='app_page')
+if page == 'Methodology & computation':
+    from methodology import show_methodology
+    show_methodology()
+    st.stop()
+st.sidebar.divider()
 st.title('📦 Inventory Decision Attribution')
 st.caption('Counterfactual Shapley decomposition of ordering decisions and delivery delays · one SKU × one location')
 
